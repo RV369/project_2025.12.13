@@ -37,5 +37,5 @@ docker compose up -d db && python scripts/load_data.py && docker compose up bot
 - Запуск микросервиса если данные уже есть в базе данных
 
 ```sh
-docker compose up -d db && python scripts/load_data.py && docker compose up bot
+docker compose up
 ```
