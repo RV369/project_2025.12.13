@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+  bot:
+    build: .
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      YANDEX_API_KEY: ${YANDEX_API_KEY}
+      YANDEX_FOLDER_ID: ${YANDEX_FOLDER_ID}
+      DB_HOST: db
+    depends_on:
+      - db
+volumes:
+  pgdata:
+  
