@@ -1,4 +1,3 @@
-# backend/.dockerignore
 venv
 .git
 db.sqlite3
@@ -6,3 +5,5 @@ db.sqlite3
 .vscode
 .env
 text.txt
+.github/
+
