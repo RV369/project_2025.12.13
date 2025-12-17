@@ -28,7 +28,7 @@ cd project_2025.12.13
    DB_PASSWORD=postgres
    DB_PORT=5432
    ```
-- Первый запуск микросервиса с наполнением тесовыми данными
+- Первый запуск микросервиса с наполнением тестовыми данными
 
 ```sh
 docker compose up -d db && python scripts/load_data.py && docker compose up bot

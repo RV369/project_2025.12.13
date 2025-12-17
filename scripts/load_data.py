@@ -1,7 +1,11 @@
 import json
+import os
 
 import psycopg2
+from dotenv import load_dotenv
 from psycopg2.extras import execute_values
+
+load_dotenv()
 
 
 def extract_first_json_object(file_path):
@@ -102,10 +106,11 @@ if __name__ == '__main__':
         exit(1)
 
     conn = psycopg2.connect(
-        host='localhost',
-        database='video_analytics',
-        user='postgres',
-        password='postgres',
+        host=os.getenv('DB_HOST', 'localhost'),
+        database=os.getenv('DB_NAME'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        port=os.getenv('DB_PORT'),
     )
     load_to_db(videos, conn)
     conn.close()

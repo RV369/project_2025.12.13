@@ -7,14 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_CONFIG = {
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'database': os.getenv('DB_NAME', 'video_analytics'),
-    'user': os.getenv('DB_USER', 'postgres'),
-    'password': os.getenv('DB_PASSWORD', 'postgres'),
-    'port': int(os.getenv('DB_PORT', 5432)),
-}
-
 YANDEX_API_KEY = os.getenv('YANDEX_API_KEY')
 YANDEX_FOLDER_ID = os.getenv('YANDEX_FOLDER_ID')
 if not YANDEX_FOLDER_ID:
@@ -135,7 +127,13 @@ def text_to_sql_result(query: str) -> int:
         ):
             return 0
 
-        with psycopg2.connect(**DB_CONFIG) as conn:
+        with psycopg2.connect(
+            host=os.getenv('DB_HOST'),
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT'),
+        ) as conn:
             with conn.cursor() as cur:
                 cur.execute(sql)
                 row = cur.fetchone()
