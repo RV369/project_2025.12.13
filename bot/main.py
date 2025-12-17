@@ -20,7 +20,8 @@ if not BOT_TOKEN:
 
 # Используем DefaultBotProperties
 bot = Bot(
-    token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+    token=BOT_TOKEN,
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML),
 )
 dp = Dispatcher()
 
