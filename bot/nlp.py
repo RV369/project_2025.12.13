@@ -20,7 +20,6 @@ HEADERS = {
     'Content-Type': 'application/json',
 }
 
-# === Промпт ===
 SCHEMA_PROMPT = """
 У тебя есть две таблицы в PostgreSQL:
 

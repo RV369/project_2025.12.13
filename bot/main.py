@@ -23,7 +23,6 @@ def setup_logging():
             if datefmt:
                 return dt.strftime(datefmt)
             return dt.isoformat()
-
     handler = logging.StreamHandler(sys.stdout)
     handler.setFormatter(
         MoscowFormatter(
@@ -31,7 +30,6 @@ def setup_logging():
             datefmt='%Y-%m-%d %H:%M:%S',
         ),
     )
-
     logging.getLogger().setLevel(logging.INFO)
     logging.getLogger().addHandler(handler)
 
@@ -43,7 +41,6 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 if not BOT_TOKEN:
     raise ValueError('BOT_TOKEN не задан в переменных окружения')
 
-# Используем DefaultBotProperties
 bot = Bot(
     token=BOT_TOKEN,
     default=DefaultBotProperties(parse_mode=ParseMode.HTML),
